@@ -10,65 +10,67 @@ int b = 7;
 short c = 3;
 double d = 2.5;
 
+enum DataType { TYPE_SHORT = 0, TYPE_INT = 1, TYPE_LONG = 2, TYPE_DOUBLE = 3 };
 
-struct data_t{ 
-    void* values[SIZE]; 
-    int types[SIZE];         
+struct data_t {
+    void* values[SIZE];
+    DataType types[SIZE];
 };
 
-void print_data(struct data_t* data_ptr){
+void print_data(const data_t* data_ptr) {
 
-    for(int i = 0; i < SIZE; i++){
-        
-        switch (data_ptr->types[i]){
+    for (int i = 0; i < SIZE; i++) {
 
-            case 0:            
-                cout << "Short " << *(static_cast<short*>(data_ptr->values[i])) << "\n";
-            break;
+        switch (data_ptr->types[i]) {
 
-            case 1:            
-                cout << "Int " << *(static_cast<int*>(data_ptr->values[i])) << "\n";
-            break;
+            case TYPE_SHORT:
+                cout << "Short  " << *(static_cast<short*>(data_ptr->values[i])) << "\n";
+                break;
 
-            case 2:            
-                cout << "Long " << *(static_cast<long*>(data_ptr->values[i])) << "\n";
-            break;
+            case TYPE_INT:
+                cout << "Int    " << *(static_cast<int*>(data_ptr->values[i])) << "\n";
+                break;
 
-            case 3:            
+            case TYPE_LONG:
+                cout << "Long   " << *(static_cast<long*>(data_ptr->values[i])) << "\n";
+                break;
+
+            case TYPE_DOUBLE:
                 cout << "Double " << *(static_cast<double*>(data_ptr->values[i])) << "\n";
-            break;
-
+                break;
         }
-
     }
 
     cout << "\n";
-
 }
-    
-int main(){
 
-    struct data_t mydata;
+int main() {
 
-    mydata.values[0] = &a; //long a 100
-    mydata.values[1] = &b; //int b 7
-    mydata.values[2] = &c; //shrt c 3
-    mydata.values[3] = &d; //doub d 2.5
+    data_t mydata;
 
-    mydata.types[0] = 2; //short
-    mydata.types[1] = 1; //int 
-    mydata.types[2] = 0; //long
-    mydata.types[3] = 3; //double
+    // Кожен values[i] відповідає своєму типу в types[i]
+    mydata.values[0] = &a; // long a = 100
+    mydata.values[1] = &b; // int b = 8
+    mydata.values[2] = &c; // short c = 3
+    mydata.values[3] = &d; // double d = 2.5
+
+    mydata.types[0] = TYPE_LONG;
+    mydata.types[1] = TYPE_INT;
+    mydata.types[2] = TYPE_SHORT;
+    mydata.types[3] = TYPE_DOUBLE;
 
     print_data(&mydata);
 
-    double implict_result = (a / (b + c) * d);
-    double exclipt_result = static_cast<double>(a / (b + c) * d);
+    // Неявне
+    double implicit_result = a / (b + c) * d;
+
+    // Явне
+    double explicit_result = static_cast<double>(a) / (b + c) * d;
 
     cout << fixed << setprecision(3);
 
-    cout << "Не явне " << implict_result << "\n";
-    cout << "Явне " << exclipt_result << "\n";
+    cout << "Неявне перетворення :     " << implicit_result << "\n";
+    cout << "Явне перетворення :    " << explicit_result << "\n";
 
     return 0;
 }
