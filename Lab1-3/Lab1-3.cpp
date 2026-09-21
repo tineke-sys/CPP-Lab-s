@@ -6,8 +6,8 @@ using namespace std;
 const int SIZE = 4;
 
 long a = 100;
-int b = 7;
-short c = 3;
+int b = -7;
+unsigned short c = 3;
 double d = 2.5;
 
 enum DataType { TYPE_SHORT = 0, TYPE_INT = 1, TYPE_LONG = 2, TYPE_DOUBLE = 3 };
