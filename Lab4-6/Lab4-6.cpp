@@ -62,9 +62,6 @@ class Car{
             FuelType = fuel;
         } else FuelType = 4;
     }
-
-
-
 };
 
 int main(){
