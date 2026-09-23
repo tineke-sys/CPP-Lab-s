@@ -30,11 +30,43 @@ class Car{
             setHP(hp);
             FuelType = fuel;
         }    
-
-    ~Car(){
-        cout << "Obj deleted" << endl;
-    }
     
+    public:
+        ~Car(){
+            cout << "Obj deleted" << endl;
+        }
+        
+    public:
+        void inputData() {
+        string name, model;
+        uint16_t hp;
+        int fuelInput;
+
+        cout << "Enter car name: ";
+        cin >> name;
+        setName(name);
+
+        cout << "Enter model: ";
+        cin >> model;
+        setModel(model);
+
+        cout << "Enter HP: ";
+        cin >> hp;
+        setHP(hp);
+
+        cout << "Enter fuel type (0-PETROL, 1-DIESEL, 2-GAS, 3-ELECTRIC): ";
+        cin >> fuelInput;
+        setFuel(static_cast<uint16_t>(fuelInput));
+    } 
+
+    public:
+        void disp(){
+
+
+
+        }    
+
+
     void setName(string name){
         if(name.empty()){
             Name = "unknown";
@@ -58,7 +90,7 @@ class Car{
     }
 
     void setFuel(uint16_t fuel){
-        if (fuel >= 0 && fuel <= 3){
+        if (fuel <= 3){
             FuelType = fuel;
         } else FuelType = 4;
     }
@@ -66,7 +98,10 @@ class Car{
 
 int main(){
 
+    // name, model, hp, (0-petr,1-dies,2-gas,3-electr);
+    Car myCar;
 
+    myCar.inputData();
 
     return 0;
 }
