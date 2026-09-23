@@ -4,40 +4,40 @@
 
 using namespace std;
 
-class Car{
+class Car {
+public:
+    enum fueltype { PETROL = 0, DIESEL = 1, GAS = 2, ELECTRIC = 3, UNKNOWN = 4 };
 
-    public:
-        enum fueltype{PETROL = 0, DIESEL = 1, GAS = 2, ELECTRIC = 3, UNKNOWN = 4};
+private:
+    string Name;
+    string Model;
+    uint16_t HP;
+    uint8_t FuelType;
 
-    private:
-        string Name;
-        string Model;
-        uint16_t HP;
-        uint8_t FuelType;
+public:
+    // Конструктор за замовчуванням
+    Car() {
+        Name = "-";
+        Model = "-";
+        HP = 0;
+        FuelType = UNKNOWN;
+    }    
 
-    public:
-        Car(){
-            Name = "-";
-            Model = "-";
-            HP = 0;
-            FuelType = 0;
-        }    
+    // Конструктор з параметрами
+    Car(string name, string model, uint16_t hp, uint8_t fuel) {
+        Name = name;
+        Model = model;
+        setHP(hp);
+        setFuel(fuel);
+    }    
 
-    public:
-        Car(string name, string model, uint16_t hp, uint8_t fuel){
-            Name = name;
-            Model = model;
-            setHP(hp);
-            FuelType = fuel;
-        }    
+    // Деструктор
+    ~Car() {
+        cout << "Obj deleted" << endl;
+    }
     
-    public:
-        ~Car(){
-            cout << "Obj deleted" << endl;
-        }
-        
-    public:
-        void inputData() {
+    // Методи введення та виведення
+    void inputData() {
         string name, model;
         uint16_t hp;
         int fuelInput;
@@ -59,49 +59,101 @@ class Car{
         setFuel(static_cast<uint16_t>(fuelInput));
     } 
 
-    public:
-        void disp(){
+    void printData() const {
+        cout << "\n--- Car Information ---" << endl;
+        cout << "Name: " << Name << endl;
+        cout << "Model: " << Model << endl;
+        cout << "HP: " << HP << endl;
+        
+        cout << "Fuel Type: ";
+        switch (FuelType) {
+            case PETROL:   cout << "Petrol"; break;
+            case DIESEL:   cout << "Diesel"; break;
+            case GAS:      cout << "Gas"; break;
+            case ELECTRIC: cout << "Electric"; break;
+            default:       cout << "Unknown"; break;
+        }
+        cout << "\n-----------------------" << endl;
+    } 
 
-
-
-        }    
-
-
-    void setName(string name){
-        if(name.empty()){
+    // Сетери (методи присвоєння)
+    void setName(string name) {
+        if (name.empty()) {
             Name = "unknown";
         } else {
             Name = name;
         }
     }
 
-    void setModel(string model){
-        if(model.empty()){
+    void setModel(string model) {
+        if (model.empty()) {
             Model = "unknown";
         } else {
             Model = model;
         }
     }
 
-    void setHP(uint16_t hp){
-        if (hp >= 0){
-            HP = hp;
-        } else HP = 0;
+    void setHP(uint16_t hp) {
+        HP = hp;
     }
 
-    void setFuel(uint16_t fuel){
-        if (fuel <= 3){
+    void setFuel(uint16_t fuel) {
+        if (fuel <= 3) {
             FuelType = fuel;
-        } else FuelType = 4;
+        } else {
+            FuelType = UNKNOWN;
+        }
     }
 };
 
-int main(){
+// Функція для демонстрації передачі за значенням
+void printCarByValue(Car c) {
+    cout << "\n[By Value function call]";
+    c.printData();
+}
 
-    // name, model, hp, (0-petr,1-dies,2-gas,3-electr);
+// Функція для демонстрації передачі за посиланням
+void upgradeCarHP(Car& c, uint16_t newHp) {
+    cout << "\n[By Reference function: updating HP...]" << endl;
+    c.setHP(newHp);
+}
+
+int main() {
+    // 1. Конструктор за замовчуванням
+    cout << "=== Default Constructor ===" << endl;
+    Car defaultCar;
+    defaultCar.printData();
+
+    cout << "\n";
+
+    // 2. Конструктор з параметрами
+    cout << "=== Input from User ===" << endl;    
     Car myCar;
-
     myCar.inputData();
+    myCar.printData();
+
+    cout << "\n";
+
+    // 3. Задання сеттерами
+    cout << "=== With Setters ===" << endl;
+    Car optCar;
+    optCar.setName("Audi");
+    optCar.setModel("A7");
+    optCar.setHP(333);
+    optCar.setFuel(Car::PETROL);
+    optCar.printData();
+
+    cout << "\n";
+
+    // 4. Демонстрація за значенням та посиланням
+    cout << "=== Pass by value and reference ===" << endl;
+    Car paramCar("BMW", "M5", 600, Car::DIESEL);
+    
+    printCarByValue(paramCar);   // Передається копія
+    upgradeCarHP(paramCar, 650); // Змінюється оригінал за посиланням
+    
+    cout << "\nAfter reference update:";
+    paramCar.printData();
 
     return 0;
 }
