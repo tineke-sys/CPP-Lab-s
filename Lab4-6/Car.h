@@ -24,9 +24,9 @@ public:
     void printData() const;
 
     void setName(std::string name);
-    void setModel(std::string model); // Обов'язково перевірте наявність цього рядка
+    void setModel(std::string model);
     void setHP(uint16_t hp);
     void setFuel(uint16_t fuel);
 };
 
-#endif // CAR_H
+#endif
