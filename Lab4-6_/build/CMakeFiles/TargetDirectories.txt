@@ -1,3 +1,0 @@
-D:/vlad/NULP/OOP/Lab4-6_/build/CMakeFiles/program.dir
-D:/vlad/NULP/OOP/Lab4-6_/build/CMakeFiles/edit_cache.dir
-D:/vlad/NULP/OOP/Lab4-6_/build/CMakeFiles/rebuild_cache.dir
