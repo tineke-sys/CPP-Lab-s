@@ -1,0 +1,14 @@
+[
+{
+  "directory": "D:/vlad/NULP/OOP/Lab4-6_/build",
+  "command": "D:\\install\\msys2\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\program.dir\\Main.cpp.obj -c D:\\vlad\\NULP\\OOP\\Lab4-6_\\Main.cpp",
+  "file": "D:/vlad/NULP/OOP/Lab4-6_/Main.cpp",
+  "output": "CMakeFiles/program.dir/Main.cpp.obj"
+},
+{
+  "directory": "D:/vlad/NULP/OOP/Lab4-6_/build",
+  "command": "D:\\install\\msys2\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\program.dir\\RadioRelay.cpp.obj -c D:\\vlad\\NULP\\OOP\\Lab4-6_\\RadioRelay.cpp",
+  "file": "D:/vlad/NULP/OOP/Lab4-6_/RadioRelay.cpp",
+  "output": "CMakeFiles/program.dir/RadioRelay.cpp.obj"
+}
+]
