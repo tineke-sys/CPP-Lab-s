@@ -61,6 +61,7 @@ void Car::printData() const {
 
 void Car::setName(string name) {
     if (name.empty()) {
+        cout << "Name cannot be empty! Setting to 'unknown'." << endl;
         Name = "unknown";
     } else {
         Name = name;
@@ -69,6 +70,7 @@ void Car::setName(string name) {
 
 void Car::setModel(string model) {
     if (model.empty()) {
+        cout << "Model cannot be empty! Setting to 'unknown'." << endl;
         Model = "unknown";
     } else {
         Model = model;
@@ -76,6 +78,10 @@ void Car::setModel(string model) {
 }
 
 void Car::setHP(uint16_t hp) {
+    
+    if (hp == 0) {
+        cout << "HP is 0. Are you sure?" << endl;
+    }
     HP = hp;
 }
 
@@ -83,6 +89,7 @@ void Car::setFuel(uint16_t fuel) {
     if (fuel <= 3) {
         FuelType = fuel;
     } else {
+        cout << "Invalid fuel type index! Setting to UNKNOWN (4)." << endl;
         FuelType = UNKNOWN;
     }
 }
