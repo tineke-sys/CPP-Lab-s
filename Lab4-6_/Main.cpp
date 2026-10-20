@@ -8,7 +8,7 @@ void printRelayByValue(RadioRelay r) {
     r.printData();
 }
 
-void upgradeRelayCurrent(RadioRelay& r, double newCurrent) {
+void upgradeRelayCurrent(RadioRelay r, double newCurrent) {
     cout << "\n[By Reference function: updating max switching current...]" << endl;
     r.setMaxSwitchCurrent(newCurrent);
 }
