@@ -21,6 +21,30 @@
             ]
         },
         {
+            "type": "shell",
+            "label": "Build Lab11",
+            "command": "D:\\install\\msys2\\ucrt64\\bin\\g++.exe",
+            "args": [
+                "-std=c++17",
+                "-Wall",
+                "-Wextra",
+                "d:\\vlad\\NULP\\OOP\\Lab11\\Antenna.cpp",
+                "d:\\vlad\\NULP\\OOP\\Lab11\\OmnidirectionalAntenna.cpp",
+                "d:\\vlad\\NULP\\OOP\\Lab11\\DirectionalAntenna.cpp",
+                "d:\\vlad\\NULP\\OOP\\Lab11\\AntennaManager.cpp",
+                "d:\\vlad\\NULP\\OOP\\Lab11\\Main.cpp",
+                "-o",
+                "d:\\vlad\\NULP\\OOP\\Lab11\\Lab11.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
             "type": "cppbuild",
             "label": "C/C++: g++.exe build active file",
             "command": "D:\\install\\msys2\\ucrt64\\bin\\g++.exe",
