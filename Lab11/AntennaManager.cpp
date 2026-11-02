@@ -9,9 +9,8 @@ AntennaManager::AntennaManager(std::string title) : managerTitle(title) {
 AntennaManager::~AntennaManager() {
 }
 
-// Пряме введення даних у поля базового класу завдяки friend
 void AntennaManager::directInput(Antenna& antenna) {
-    std::cout << "\n[AntennaManager Direct Input -> Antenna]\n";
+    std::cout << "\n[AntennaManager Direct Input]\n";
     std::cout << "Enter antenna model name: ";
     std::getline(std::cin >> std::ws, antenna.name);
 
@@ -22,42 +21,38 @@ void AntennaManager::directInput(Antenna& antenna) {
     std::cin >> antenna.spec.gain;
 }
 
-// Пряме введення у поля OmnidirectionalAntenna
 void AntennaManager::directInput(OmnidirectionalAntenna& antenna) {
     directInput(static_cast<Antenna&>(antenna));
     std::cout << "Enter horizontal beamwidth (degrees): ";
     std::cin >> antenna.beamwidth;
 }
 
-// Пряме введення у поля DirectionalAntenna
 void AntennaManager::directInput(DirectionalAntenna& antenna) {
     directInput(static_cast<Antenna&>(antenna));
     std::cout << "Enter front-to-back ratio (dB): ";
     std::cin >> antenna.frontToBackRatio;
 }
 
-// Пряме виведення (доступ до protected name і spec напряму без гетерів)
 void AntennaManager::directDisplay(const Antenna& antenna) const {
-    std::cout << "[Friend Class Display] Model: " << antenna.name 
+    std::cout << "[Friend Display] Model: " << antenna.name 
               << " | Freq: " << antenna.spec.frequency << " MHz"
               << " | Gain: " << antenna.spec.gain << " dBi" << std::endl;
 }
 
 void AntennaManager::directDisplay(const OmnidirectionalAntenna& antenna) const {
-    std::cout << "[Friend Class Display - Omnidirectional] Model: " << antenna.name 
+    std::cout << "[Friend Display - Omni] Model: " << antenna.name 
               << " | Freq: " << antenna.spec.frequency << " MHz"
               << " | Gain: " << antenna.spec.gain << " dBi"
               << " | Beamwidth: " << antenna.beamwidth << " deg" << std::endl;
 }
 
 void AntennaManager::directDisplay(const DirectionalAntenna& antenna) const {
-    std::cout << "[Friend Class Display - Directional] Model: " << antenna.name 
+    std::cout << "[Friend Display - Directional] Model: " << antenna.name 
               << " | Freq: " << antenna.spec.frequency << " MHz"
               << " | Gain: " << antenna.spec.gain << " dBi"
               << " | Front-to-Back: " << antenna.frontToBackRatio << " dB" << std::endl;
 }
 
-// Обчислення результатів за індивідуальним завданням
 AntennaStatistics AntennaManager::computeStatistics(const std::vector<Antenna*>& list) {
     AntennaStatistics stats = {0.0, -1e9, 1e9, 0.0, 0.0, "N/A"};
     if (list.empty()) {
@@ -66,7 +61,6 @@ AntennaStatistics AntennaManager::computeStatistics(const std::vector<Antenna*>&
 
     double totalFrequency = 0.0;
     for (const auto* ant : list) {
-        // Доступ до приватних/захищених полів напряму
         double g = ant->spec.gain;
         double f = ant->spec.frequency;
 
@@ -85,7 +79,6 @@ AntennaStatistics AntennaManager::computeStatistics(const std::vector<Antenna*>&
     stats.averageGain = stats.totalGain / list.size();
     stats.averageFrequency = totalFrequency / list.size();
 
-    // Зберігання розрахунку у внутрішній вектор структур дружнього класу
     historyStats.push_back(stats);
     return stats;
 }
@@ -115,4 +108,3 @@ void AntennaManager::tuneFrequency(Antenna& antenna, double targetFreq) {
     std::cout << "[Friend Tune] Antenna \"" << antenna.name << "\" frequency tuned to: " 
               << antenna.spec.frequency << " MHz" << std::endl;
 }
-

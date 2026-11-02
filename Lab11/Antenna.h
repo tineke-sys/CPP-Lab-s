@@ -4,16 +4,14 @@
 #include <iostream>
 #include <string>
 
-// Оголошення дружнього класу для обробки даних
 class AntennaManager;
 
-// Структура параметрів антени
 struct AntennaSpec {
-    double frequency; // Частота, МГц
-    double gain;      // Коефіцієнт підсилення, dBi
+    double frequency;
+    double gain;
 };
 
-// Базовий клас: Антена
+// Base class
 class Antenna {
 protected:
     std::string name;
@@ -38,9 +36,7 @@ public:
     virtual void inputData();
     virtual void printData() const;
 
-    // Дружній клас має доступ до захищених та закритих полів базового класу
     friend class AntennaManager;
 };
 
 #endif // ANTENNA_H
-

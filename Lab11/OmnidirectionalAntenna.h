@@ -3,10 +3,10 @@
 
 #include "Antenna.h"
 
-// Дочірній клас 1: Всеспрямована антена
+// Derived class: Omnidirectional antenna
 class OmnidirectionalAntenna : public Antenna {
 private:
-    double beamwidth; // Горизонтальна ширина діаграми спрямованості у градусах (зазвичай 360°)
+    double beamwidth;
 
     bool isBeamwidthValid(double bw) const;
 
@@ -21,9 +21,7 @@ public:
     virtual void inputData();
     virtual void printData() const;
 
-    // Дружній клас має доступ до полів OmnidirectionalAntenna
     friend class AntennaManager;
 };
 
 #endif // OMNIDIRECTIONAL_ANTENNA_H
-

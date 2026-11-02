@@ -8,7 +8,7 @@ bool Antenna::isGainValid(double g) const {
     return g >= -10.0 && g <= 60.0;
 }
 
-Antenna::Antenna() : name("Unknown Antenna") {
+Antenna::Antenna() : name("Antenna-Basic") {
     spec.frequency = 2400.0;
     spec.gain = 0.0;
 }
@@ -26,7 +26,7 @@ void Antenna::setName(std::string name) {
     if (!name.empty()) {
         this->name = name;
     } else {
-        this->name = "Unknown Antenna";
+        this->name = "Antenna-Basic";
     }
 }
 
@@ -34,7 +34,7 @@ void Antenna::setFrequency(double freq) {
     if (isFrequencyValid(freq)) {
         spec.frequency = freq;
     } else {
-        std::cout << "[Antenna Warning] Incorrect frequency value: " << freq << " MHz. Default set (2400 MHz).\n";
+        std::cout << "[Warning] Invalid frequency: " << freq << " MHz. Set to default (2400 MHz).\n";
         spec.frequency = 2400.0;
     }
 }
@@ -43,7 +43,7 @@ void Antenna::setGain(double g) {
     if (isGainValid(g)) {
         spec.gain = g;
     } else {
-        std::cout << "[Antenna Warning] Incorrect gain value: " << g << " dBi. Default set (0 dBi).\n";
+        std::cout << "[Warning] Invalid gain: " << g << " dBi. Set to default (0 dBi).\n";
         spec.gain = 0.0;
     }
 }
@@ -81,4 +81,3 @@ void Antenna::printData() const {
     std::cout << "Frequency: " << spec.frequency << " MHz" << std::endl;
     std::cout << "Gain: " << spec.gain << " dBi" << std::endl;
 }
-

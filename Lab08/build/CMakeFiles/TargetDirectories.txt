@@ -1,0 +1,3 @@
+D:/vlad/NULP/OOP/Lab8/build/CMakeFiles/Lab8.dir
+D:/vlad/NULP/OOP/Lab8/build/CMakeFiles/edit_cache.dir
+D:/vlad/NULP/OOP/Lab8/build/CMakeFiles/rebuild_cache.dir

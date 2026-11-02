@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe build active file",
+            "command": "g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "-std=c++17",
+                "${workspaceFolder}/Lab8/*.cpp",
+                "-o",
+                "${workspaceFolder}/Lab8/Lab8.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/Lab8"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Compiler: g++.exe from MSYS2"
+        }
+    ]
+}
+
