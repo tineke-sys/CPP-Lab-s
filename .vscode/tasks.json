@@ -22,6 +22,27 @@
         },
         {
             "type": "shell",
+            "label": "Build Lab12",
+            "command": "D:\\install\\msys2\\ucrt64\\bin\\g++.exe",
+            "args": [
+                "-std=c++17",
+                "-Wall",
+                "-Wextra",
+                "d:\\vlad\\NULP\\OOP\\Lab12\\Rectangle.cpp",
+                "d:\\vlad\\NULP\\OOP\\Lab12\\Main.cpp",
+                "-o",
+                "d:\\vlad\\NULP\\OOP\\Lab12\\Lab12.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
             "label": "Build Lab11",
             "command": "D:\\install\\msys2\\ucrt64\\bin\\g++.exe",
             "args": [
